@@ -33,18 +33,39 @@ export default {
 
 
 .topbar {
+  position: relative;
+  box-shadow: 0 0 3px hsla(0,0,0,0.5); 
+  z-index: 1;
 }
+
+.icon {
+  width: 1em; height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  }
 
 main {
   display: flex;
   flex: 1;
+  background: #ddd;
 
   .editor {
-    width: 20em;
+    width: 40em;
+    background: #fff;
+    margin: 16px 8px 16px 16px;
+    box-shadow: 0 0 3px hsla(0,0,0,0.5); 
+    border-radius: 5px;
+    overflow: hidden;
   }
 
  .preview {
     flex: 1;
+    background: #fff;
+    margin: 16px 16px 16px 8px;
+    box-shadow: 0 0 3px hsla(0,0,0,0.5); 
+    border-radius: 5px;
+
   }
 }
 
