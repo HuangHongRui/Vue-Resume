@@ -1,0 +1,10 @@
+<template>
+  <dl>
+    <dt>姓名</dt>
+    <dd>锐锐</dd>
+    <dt>年龄</dt>
+    <dd>18</dd>
+    <dt>性别</dt>
+    <dd>男神</dd>
+  </dl>
+</template>
