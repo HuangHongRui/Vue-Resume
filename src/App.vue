@@ -1,10 +1,11 @@
 <template>
-<div id="app">
-  <Topbar class='topbar'/>
+  <div id="app" v-bind:class="{previewMode: previewMode}">
+  <Topbar class='topbar' v-on:preview="preview"/>
     <main>
       <Editor v-bind:resume="resume" class='editor'/>
       <Preview v-bind:resume="resume" class='preview'/>
     </main>
+    <el-button id="exitPreview" v-on:click="exitPreview">退出预览</el-button>
   </div>
 </template>
 
@@ -16,44 +17,30 @@ import Preview from './components/Preview'
 export default {
   data() {
     return {
+      previewMode: false,
       resume: {
-        profile: {
-          name: '',
-          city: '',
-          birth: ''
-        },
-        workHistory: [{
-          company: '',
-          content: ''
-        }],
-        studyHistory: [{
-          school: '',
-          duration: '',
-          degree: ''
-        }],
-        projects: [{
-          name: '',
-          content: ''
-        }],
-        awards: [{
-          name: ''
-        }],
-        contacts: [{
-          qq: '',
-          wechat: '',
-          phone: '',
-          email: ''
-        }]
-
+        profile: { name: '', city: '', birth: '' },
+        workHistory: [{ company: '', content: '' }],
+        studyHistory: [{ school: '', duration: '', degree: '' }],
+        projects: [{ name: '', content: '' }],
+        awards: [{ name: '' }],
+        contacts: [{ qq: '', wechat: '', phone: '', email: '' }]
       }
     }
   },
-
-  name: 'app',
+  methods: {
+    exitPreview(){
+      this.previewMode = false
+    },
+    preview(){
+      this.previewMode = true
+    }
+  },
   components: {
     Topbar, Editor, Preview
-  }
+  },
 }
+
 </script>
 
 <style lang='scss'>
@@ -100,10 +87,32 @@ export default {
       margin: 16px 16px 16px 8px;
       box-shadow: 0 0 3px hsla(0,0,0,0.5);
       border-radius: 5px;
+    }
+  }
+  .previewMode {
+    > #topbar {
+      display: none;
+    } 
+    
+    #editor {
+      display: none;
+    }
 
+    #preview {
+      max-width: 800px;
+      margin: 32px auto;
+    }
+
+    #exitPreview {
+      display: inline-block;
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
     }
   }
 
-
+  #exitPreview {
+    display: none;
+  }
 
 </style>
